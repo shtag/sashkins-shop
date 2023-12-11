@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Component({
   selector: 'app-home',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
+  items$ = this.firestore.collection('/');
 
+  constructor(private firestore: AngularFirestore) {
+    console.log(firestore.collection('/'))
+  }
 }
