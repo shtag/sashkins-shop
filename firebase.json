@@ -1,0 +1,9 @@
+{
+  "hosting": [
+    {
+      "target": "sashkins-shop",
+      "source": ".",
+      "frameworksBackend": {}
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "sashkins-shop": {
+      "hosting": {
+        "sashkins-shop": [
+          "sashkins-shop"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "sashkins-shop"
+  }
+}
