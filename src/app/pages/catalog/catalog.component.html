@@ -1,0 +1,5 @@
+<a routerLink="product/1" class="product-card" *ngFor="let item of items">
+  <img src="{{item.image[0]}}" alt="" srcset="">
+  <p class="title">{{item.name}}</p>
+  <p class="price">{{item.price}} грн</p>
+</a>
