@@ -8,6 +8,7 @@ import { ProductComponent } from './product/product.component';
 import { SharedModule } from '../shared/shared.module';
 import { ContactsComponent } from './contacts/contacts.component';
 import { RouterModule } from '@angular/router';
+import { MaterialModule } from '../shared/material/material.module';
 
 
 
@@ -22,8 +23,17 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     CommonModule,
+    RouterModule,
     SharedModule,
-    RouterModule
+    MaterialModule,
+  ],
+  exports: [
+    CartComponent,
+    HomeComponent,
+    DeliveryComponent,
+    CatalogComponent,
+    ProductComponent,
+    ContactsComponent
   ]
 })
 export class PagesModule { }

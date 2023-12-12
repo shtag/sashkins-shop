@@ -107,11 +107,23 @@
             "version": 2,
             "browserTarget": "sashkins-shop:build:production"
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
   },
   "cli": {
-    "analytics": "535285b6-05df-4ab9-a1d8-a8b9f2618a5f"
+    "analytics": "535285b6-05df-4ab9-a1d8-a8b9f2618a5f",
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
   }
 }
