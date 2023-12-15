@@ -104,9 +104,19 @@
         "deploy": {
           "builder": "@angular/fire:deploy",
           "options": {
-            "version": 2,
-            "browserTarget": "sashkins-shop:build:production"
-          }
+            "version": 2
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "sashkins-shop:build:production",
+              "serveTarget": "sashkins-shop:serve:production"
+            },
+            "development": {
+              "buildTarget": "sashkins-shop:build:development",
+              "serveTarget": "sashkins-shop:serve:development"
+            }
+          },
+          "defaultConfiguration": "production"
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",

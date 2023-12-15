@@ -8,6 +8,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 import { PagesModule } from "./pages/pages.module";
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { getDatabase, provideDatabase } from '@angular/fire/database';
+import { environment } from "src/environments/environment";
 
 @NgModule({
   declarations: [
@@ -19,7 +23,10 @@ import { PagesModule } from "./pages/pages.module";
     BrowserAnimationsModule,
     CoreModule,
     SharedModule,
-    PagesModule
+    PagesModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideFirestore(() => getFirestore()),
+    provideDatabase(() => getDatabase())
   ],
   exports: [
     SharedModule
