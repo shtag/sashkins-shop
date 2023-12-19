@@ -1,3 +1,18 @@
-<button mat-button (click)="getInfo()">Get All</button>
-<button mat-button (click)="getInfo()">Get</button>
-<div class="result">{{result}}</div>
+<button mat-button (click)="getAllProducts()">Get All Products</button>
+<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <mat-label>ID</mat-label>
+    <input #idInput matInput placeholder="">
+  </mat-form-field>
+  
+  <button mat-button (click)="getProduct(idInput.value)" type="button">Get Product</button>
+</form>
+<button mat-button (click)="getAllOrders()">Get All Orders</button>
+<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <mat-label>ID</mat-label>
+    <input #idOrder matInput placeholder="">
+  </mat-form-field>
+  
+  <button mat-button (click)="setOrder(idOrder.value)" type="button">Set Orders</button>
+</form>
