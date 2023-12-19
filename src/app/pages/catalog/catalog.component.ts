@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import ProductDB from 'src/app/model/db.product.model';
+import { DatabaseService } from 'src/app/shared/database.service';
 
 @Component({
   selector: 'app-catalog',
@@ -7,8 +8,11 @@ import ProductDB from 'src/app/model/db.product.model';
   styleUrls: ['./catalog.component.scss']
 })
 export class CatalogComponent {
-  // constructor(private db: DatabaseService) {
-  //   this.getItems()
-  // }
+  constructor(private db: DatabaseService) {
+    db.getAllProducts().subscribe(item => {
+      this.items = item;
+
+    })
+  }
   items: ProductDB[] = []
 }

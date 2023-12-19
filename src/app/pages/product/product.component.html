@@ -1,1 +1,7 @@
-<p>product works!</p>
+<div *ngIf="product" class="product-card">
+  <div class="galery">
+
+    <img  src="{{product.image[0]}}" alt="">
+  </div>
+  <p>{{product.price}} UAH</p>
+</div>

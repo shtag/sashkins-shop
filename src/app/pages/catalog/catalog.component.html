@@ -1,8 +1,5 @@
-<a routerLink="product/1" class="product-card" *ngFor="let item of items">
+<a routerLink="/product/{{item.id}}" class="product-card" *ngFor="let item of items">
   <img src="{{item.image[0]}}" alt="" srcset="">
   <p class="title">{{item.name}}</p>
   <p class="price">{{item.price}} грн</p>
 </a>
-<button mat-button>Basic</button>
-<button mat-button>Basic</button>
-<button mat-button>Basic</button>

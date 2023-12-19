@@ -6,7 +6,7 @@ import { FirebaseApp } from '@angular/fire/app';
 import { Observable, from, map } from 'rxjs';
 import OrderDB from '../model/db.order.model';
 
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 import { signInWithEmailAndPassword } from '@angular/fire/auth';
 
 
@@ -16,23 +16,25 @@ import { signInWithEmailAndPassword } from '@angular/fire/auth';
 })
 export class DatabaseService {
   db: Database
+  allProducts$: Observable<ProductDB[]>
   constructor(private fireDB: FirebaseApp) {
     this.db = getDatabase(this.fireDB);
+    this.allProducts$ = this.getAllProducts()
   }
 
   readAll() {
     const auth = getAuth();
-    // signInWithEmailAndPassword(auth, 'shtag@gmail.com', 'shtag1861')
-    //   .then((userCredential) => {
-    //     // Signed up 
-    //     const user = userCredential.user;
-    //     console.log(user)
-    //     // ...
-    //   })
-    //   .catch((error) => {
-    //     console.log(error)
-    //     // ..
-    //   });
+    signInWithEmailAndPassword(auth, 'shtag@gmail.com', 'shtag1861')
+      .then((userCredential) => {
+        // Signed up 
+        const user = userCredential.user;
+        console.log(user.email)
+        // ...
+      })
+      .catch((error) => {
+        console.log(error)
+        // ..
+      });
     // return this.asd.collection('products').get()
     const starCountRef = ref(this.db, '/')
     return from(get(starCountRef)).pipe(
