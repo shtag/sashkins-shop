@@ -6,6 +6,7 @@ import { DeliveryComponent } from './pages/delivery/delivery.component';
 import { CatalogComponent } from './pages/catalog/catalog.component';
 import { ProductComponent } from './pages/product/product.component';
 import { ContactsComponent } from './pages/contacts/contacts.component';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
@@ -26,12 +27,21 @@ const routes: Routes = [
   },
   {
     path: 'catalog',
+    title: 'Каталог',
     component: CatalogComponent
   },
   {
-    path: 'catalog/:id',
+    path: 'product/:id',
     component: ProductComponent
-  }
+  },
+  {
+    path: 'page-not-found',
+    component: PageNotFoundComponent
+  },
+  {
+    path: '**',
+    component: PageNotFoundComponent
+  },
 ];
 
 @NgModule({
