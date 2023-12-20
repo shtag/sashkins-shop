@@ -4,4 +4,28 @@
     <img  src="{{product.image[0]}}" alt="">
   </div>
   <p>{{product.price}} UAH</p>
+  <div>
+    <div>
+    <mat-chip-listbox aria-label="Fish selection">
+      <mat-chip-option *ngFor="let item of product.color">
+        <svg matChipAvatar width="18" height="18">
+          <circle cx="9" cy="9" r="9" [attr.fill]="item" />
+        </svg>
+        {{item}}
+      </mat-chip-option>
+    </mat-chip-listbox>
+  </div>
+  <div>
+  
+    <mat-chip-set role="list">
+      <mat-chip role="listitem" *ngFor="let item of product.color">
+        <svg matChipAvatar width="18" height="18">
+          <circle cx="9" cy="9" r="9" [attr.fill]="item" /> 
+        </svg>
+         {{item}}
+        </mat-chip>
+    </mat-chip-set>
+  </div>
+  </div>
+  
 </div>

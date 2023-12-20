@@ -7,6 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   declarations: [],
@@ -17,7 +18,8 @@ import { MatInputModule } from '@angular/material/input';
     MatIconModule,
     MatToolbarModule,
     MatButtonModule,
-    MatInputModule
+    MatInputModule,
+    MatChipsModule
   ],
   exports: [
     MatSidenavModule,
@@ -25,7 +27,8 @@ import { MatInputModule } from '@angular/material/input';
     MatIconModule,
     MatToolbarModule,
     MatButtonModule,
-    MatInputModule
+    MatInputModule,
+    MatChipsModule
   ]
 })
 export class MaterialModule { }

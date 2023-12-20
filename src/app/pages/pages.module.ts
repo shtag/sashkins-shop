@@ -9,6 +9,7 @@ import { SharedModule } from '../shared/shared.module';
 import { ContactsComponent } from './contacts/contacts.component';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from '../shared/material/material.module';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 
@@ -19,7 +20,8 @@ import { MaterialModule } from '../shared/material/material.module';
     DeliveryComponent,
     CatalogComponent,
     ProductComponent,
-    ContactsComponent
+    ContactsComponent,
+    PageNotFoundComponent
   ],
   imports: [
     CommonModule,
@@ -33,7 +35,8 @@ import { MaterialModule } from '../shared/material/material.module';
     DeliveryComponent,
     CatalogComponent,
     ProductComponent,
-    ContactsComponent
+    ContactsComponent,
+    PageNotFoundComponent
   ]
 })
 export class PagesModule { }

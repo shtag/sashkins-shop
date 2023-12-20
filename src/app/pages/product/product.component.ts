@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import ProductDB from 'src/app/model/db.product.model';
 import { DatabaseService } from 'src/app/shared/database.service';
+import { PRODUCT_COLORS } from './product.colors';
 
 @Component({
   selector: 'app-product',
@@ -11,6 +12,8 @@ import { DatabaseService } from 'src/app/shared/database.service';
 export class ProductComponent {
   id: string = '1';
   product?: ProductDB;
+
+  COLORS = PRODUCT_COLORS
 
   constructor(private db: DatabaseService, private router: Router, private route: ActivatedRoute) {
     route.params.subscribe(params => this.id = params["id"])
