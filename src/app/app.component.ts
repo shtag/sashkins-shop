@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-root',
@@ -8,4 +9,10 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'sashkins-shop';
   opened: boolean = false;
+
+  constructor(private store: Store) {
+    window.addEventListener("beforeunload", () => {
+      store.select(state => state).subscribe(item => localStorage.setItem('ngStorage', JSON.stringify(item)))
+    });
+  }
 }

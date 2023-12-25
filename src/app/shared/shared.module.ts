@@ -2,6 +2,7 @@
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from './material/material.module';
 import { NgModule } from '@angular/core';
+import { CdkStepperModule } from '@angular/cdk/stepper';
 
 
 
@@ -9,10 +10,12 @@ import { NgModule } from '@angular/core';
   declarations: [],
   imports: [
     CommonModule,
-    MaterialModule
+    MaterialModule,
+    CdkStepperModule
   ],
   exports: [
-    MaterialModule
+    MaterialModule,
+    CdkStepperModule
   ]
 })
 export class SharedModule { }
