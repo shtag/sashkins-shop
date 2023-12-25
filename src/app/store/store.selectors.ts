@@ -7,9 +7,14 @@ export interface AppState {
   favorites: CartState
 }
 
-export const selectCart = (state: AppState) => state.cart;
+export const selectCarts = (state: AppState) => state.cart;
 
 export const selectCartLength = createSelector(
-  selectCart,
+  selectCarts,
   (state: CartState) => state.items.length
+);
+
+export const selectCart = createSelector(
+  selectCarts,
+  (state: CartState) => state
 );

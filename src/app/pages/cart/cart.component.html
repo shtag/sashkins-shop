@@ -1,1 +1,11 @@
 <h1>Кошик</h1>
+<div>
+
+  <div style="border: 2px solid black; border-radius: 4px;"  *ngFor="let item of cart.items">
+    <p>Price: {{item.price}}</p>
+    <p>Size: {{item.size}}</p>
+    <p>Art: {{item.art}}</p>
+    <p>Color: {{item.color}}</p>
+  </div>
+  <div>Total Price{{cart.totalPrice}}</div>
+</div>

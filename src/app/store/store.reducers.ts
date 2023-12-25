@@ -5,6 +5,8 @@ import { AppState } from './store.selectors';
 
 
 
+
+
 export const initialCartState: CartState = {
   totalPrice: 0,
   items: []
@@ -25,7 +27,7 @@ export const cartReducer = createReducer(
     return {
       ...state,
       items: state.items.filter(item => item.art !== itemId),
-      totalPrice: state.items.reduce((acc, curr) => acc + curr.price, 0) // Recalculate totalPrice
+      totalPrice: state.items.reduce((acc, curr) => acc + curr.price, 0)
     };
   }
   )
@@ -45,7 +47,7 @@ export const favoritesReducer = createReducer(
     return {
       ...state,
       items: state.items.filter(item => item.art !== itemId),
-      totalPrice: state.items.reduce((acc, curr) => acc + curr.price, 0) // Recalculate totalPrice
+      totalPrice: state.items.reduce((acc, curr) => acc + curr.price, 0)
     };
   }
   )
@@ -55,12 +57,4 @@ export const APP_STATE: AppState = {
   cart: initialCartState,
   favorites: initialCartState,
 
-}
-
-function getStorage() {
-  const storage = localStorage.getItem('ngStorage')
-  if (storage) {
-    return JSON.parse(storage) as CartState
-  }
-  return initialCartState
 }

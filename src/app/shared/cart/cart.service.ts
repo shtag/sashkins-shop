@@ -17,9 +17,6 @@ export class CartService {
   }
 
   add(item: CartItem) {
-    console.log(item)
-    this.cart.items.push(item)
-    console.log(this.cart)
     this.store.dispatch(CartActions.addToCart({ item }));
   }
 

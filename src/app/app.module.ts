@@ -17,6 +17,7 @@ import { FormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { cartReducer } from "./store/store.reducers";
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { metaReducers } from "./store/hydration.reducer";
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     provideDatabase(() => getDatabase()),
     provideAuth(() => getAuth()),
     FormsModule,
-    StoreModule.forRoot({ cart: cartReducer }),
+    StoreModule.forRoot({ cart: cartReducer }, { metaReducers }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() })
   ],
   exports: [
