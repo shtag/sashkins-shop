@@ -17,6 +17,17 @@ export const initialCartState: CartState = {
 export const cartReducer = createReducer(
   initialCartState,
   on(CartActions.addToCart, (state, { item }) => {
+    const index = state.items.findIndex(i => i.art === item.art);
+
+    if (index !== -1 && state.items[index].color === item.color && state.items[index].size === item.size) {
+      // If found, increment quantity
+      const updatedItem = { ...state.items[index], quantity: state.items[index].quantity + 1 };
+      return {
+        ...state,
+        items: [...state.items.slice(0, index), updatedItem, ...state.items.slice(index + 1)],
+        totalPrice: state.totalPrice + item.price // Adjust total price accordingly
+      };
+    }
     return {
       ...state,
       items: [...state.items, item],
@@ -58,3 +69,6 @@ export const APP_STATE: AppState = {
   favorites: initialCartState,
 
 }
+
+
+

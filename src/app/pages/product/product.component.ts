@@ -64,10 +64,12 @@ export class ProductComponent {
 Размер: ${size}
       `)
       const cart = {
+        id: this.product.id,
         color: color,
         size: size,
         art: this.product.art,
-        price: this.product.price
+        price: this.product.price,
+        quantity: 1,
       }
       this.cart.add(cart)
     }

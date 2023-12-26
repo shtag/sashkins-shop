@@ -6,6 +6,14 @@
     <p>Size: {{item.size}}</p>
     <p>Art: {{item.art}}</p>
     <p>Color: {{item.color}}</p>
+    <button mat-button [id]="item.art" (click)="removeItem(item.art)">Delete</button>
+    <button mat-icon-button>
+      <mat-icon aria-hidden="false" fontIcon="remove"></mat-icon>
+    </button>
+    <span style="font-size: 18px;">{{item.quantity}}</span>
+    <button mat-icon-button>
+      <mat-icon aria-hidden="false"  fontIcon="add"></mat-icon>
+    </button>
   </div>
   <div>Total Price{{cart.totalPrice}}</div>
 </div>

@@ -2,7 +2,7 @@
 import { Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { AppState, selectCartLength } from 'src/app/store/store.selectors';
+import { AppState, selectCart, selectCartLength } from 'src/app/store/store.selectors';
 
 @Component({
   selector: 'app-header',
@@ -16,10 +16,10 @@ export class HeaderComponent implements OnDestroy {
 
   itemsInCart = 0
 
-  itemsInCart$ = this.store.select(selectCartLength)
+  // itemsInCart$ = this.store.select(selectCartLength)
 
   constructor(private router: Router, private store: Store<AppState>) {
-    this.store.select(selectCartLength)
+    this.store.select(selectCart).subscribe(cart => this.itemsInCart = cart.items.map(item => item.quantity).reduce((acc, now) => acc + now))
   }
 
   openMenu() {
