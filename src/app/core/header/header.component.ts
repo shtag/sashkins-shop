@@ -2,7 +2,7 @@
 import { Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { AppState, selectCart, selectCartLength } from 'src/app/store/store.selectors';
+import { AppState, selectCart } from 'src/app/store/store.selectors';
 
 @Component({
   selector: 'app-header',

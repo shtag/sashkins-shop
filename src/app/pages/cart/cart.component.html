@@ -20,7 +20,7 @@
           </div>
         </div>
         <div style="display: flex; justify-content: space-between; align-items: center; flex-direction: column;">
-          <button mat-button [id]="item.art" (click)="removeItem(item.art, item.size, item.color)">Видалити</button>
+          <button mat-button [id]="item.art" (click)="removeItem(item.id, item.size, item.color)">Видалити</button>
           
           <p>Ціна: {{item.price}}</p>
         </div>

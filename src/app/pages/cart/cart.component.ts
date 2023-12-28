@@ -26,8 +26,9 @@ export class CartComponent implements OnDestroy {
     this.cartSubscription.unsubscribe()
   }
 
-  removeItem(id: string, size: string, color: string) {
+  removeItem(id: number, size: string, color: string) {
     this.store.dispatch(CartActions.removeFromCart({ itemId: id, size, color }))
+    console.log('delete')
   }
 
   increase(item: CartItem) {

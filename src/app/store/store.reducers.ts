@@ -36,6 +36,7 @@ export const cartReducer = createReducer(
   on(CartActions.removeFromCart, (state, { itemId, size, color }) => {
     const newCartItems = state.items.filter(item => item.id !== +itemId || item.size !== size || item.color !== color)
     const totalPrice = newCartItems.reduce((acc, curr) => acc + curr.price * curr.quantity, 0);
+    console.log(newCartItems)
     return {
       ...state,
       items: newCartItems,

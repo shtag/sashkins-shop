@@ -8,7 +8,7 @@ export const addToCart = createAction(
 
 export const removeFromCart = createAction(
   '[Cart] Remove Item',
-  props<{ itemId: string, size: string, color: string }>()
+  props<{ itemId: number, size: string, color: string }>()
 );
 
 export const loadCart = createAction(
