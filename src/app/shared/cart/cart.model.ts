@@ -10,4 +10,9 @@ export interface CartItem {
   art: string;
   price: number;
   quantity: number;
+  description: string;
+  name: string;
+  image: string[];
+  vendorDEscription: string;
+  vendorPrice: number;
 }

@@ -11,6 +11,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatCardModule } from '@angular/material/card';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatDividerModule } from '@angular/material/divider';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatChipsModule,
     MatCardModule,
     MatStepperModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatDividerModule
   ],
   exports: [
     MatSidenavModule,
@@ -38,7 +40,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatChipsModule,
     MatCardModule,
     MatStepperModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatDividerModule
   ]
 })
 export class MaterialModule { }

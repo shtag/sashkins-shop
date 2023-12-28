@@ -17,7 +17,7 @@ export const initialCartState: CartState = {
 export const cartReducer = createReducer(
   initialCartState,
   on(CartActions.addToCart, (state, { item }) => {
-    const index = state.items.findIndex(i => i.art === item.art && i.color === item.color && i.size === item.size);
+    const index = state.items.findIndex(i => i.id === item.id && i.color === item.color && i.size === item.size);
     const totalPrice = state.items.reduce((acc, curr) => acc + curr.price * curr.quantity, 0)
     if (index !== -1 && state.items[index].color === item.color && state.items[index].size === item.size) {
       const updatedItem = { ...state.items[index], quantity: state.items[index].quantity + 1 };
@@ -34,7 +34,7 @@ export const cartReducer = createReducer(
     };
   }),
   on(CartActions.removeFromCart, (state, { itemId, size, color }) => {
-    const newCartItems = state.items.filter(item => item.art !== itemId || item.size !== size || item.color !== color)
+    const newCartItems = state.items.filter(item => item.id !== +itemId || item.size !== size || item.color !== color)
     const totalPrice = newCartItems.reduce((acc, curr) => acc + curr.price * curr.quantity, 0);
     return {
       ...state,
@@ -51,7 +51,7 @@ export const cartReducer = createReducer(
     };
   }),
   on(CartActions.decreaseQuantity, (state, { item }) => {
-    const index = state.items.findIndex(i => i.art === item.art && i.color === item.color && i.size === item.size);
+    const index = state.items.findIndex(i => i.id === item.id && i.color === item.color && i.size === item.size);
     const totalPrice = state.items.reduce((acc, curr) => acc + curr.price * curr.quantity, 0)
     if (index !== -1 && state.items[index].color === item.color && state.items[index].size === item.size) {
       const updatedItem = { ...state.items[index], quantity: state.items[index].quantity - 1 };
@@ -85,7 +85,7 @@ export const cartReducer = createReducer(
 //   on(CartActions.removeFromCart, (state, { itemId }) => {
 //     return {
 //       ...state,
-//       items: state.items.filter(item => item.art !== itemId),
+//       items: state.items.filter(item => item.id !== itemId),
 //       totalPrice: state.items.reduce((acc, curr) => acc + curr.price * curr.quantity, 0)
 //     };
 //   }

@@ -26,9 +26,7 @@
 .side_nav {
   width: 400px;
 
-  @media (max-width: 768px) {
-    width: 50%;
-  }
+  @media (max-width: 768px) {}
 
   @media (max-width: 425px) {
     width: 100%;

@@ -64,6 +64,7 @@ export class ProductComponent {
 Размер: ${size}
       `)
       const cart = {
+        ...this.product,
         id: this.product.id,
         color: color,
         size: size,
