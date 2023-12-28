@@ -19,7 +19,15 @@ export class HeaderComponent implements OnDestroy {
   // itemsInCart$ = this.store.select(selectCartLength)
 
   constructor(private router: Router, private store: Store<AppState>) {
-    this.store.select(selectCart).subscribe(cart => this.itemsInCart = cart.items.map(item => item.quantity).reduce((acc, now) => acc + now))
+    this.store.select(selectCart).subscribe(cart => {
+      const items = cart.items.map(item => item.quantity);
+      if (items.length) {
+        const n = items.reduce((acc, now) => acc + now)
+        this.itemsInCart = n
+      } else {
+        this.itemsInCart = 0
+      }
+    })
   }
 
   openMenu() {

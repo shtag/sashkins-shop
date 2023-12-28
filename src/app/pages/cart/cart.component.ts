@@ -1,8 +1,9 @@
+
 import { Component, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { CartState } from 'src/app/shared/cart/cart.model';
+import { CartItem, CartState } from 'src/app/shared/cart/cart.model';
 import { initialCartState } from 'src/app/store/store.reducers';
-import { AppState, selectCart, selectCartLength } from 'src/app/store/store.selectors';
+import { AppState, selectCart, } from 'src/app/store/store.selectors';
 import * as CartActions from 'src/app/store/store.action';
 
 @Component({
@@ -15,6 +16,8 @@ export class CartComponent implements OnDestroy {
 
   cart: CartState = initialCartState;
 
+  savedCart = initialCartState
+
   constructor(private store: Store<AppState>) {
     this.store.select(selectCart).subscribe(cart => this.cart = cart)
   }
@@ -23,8 +26,26 @@ export class CartComponent implements OnDestroy {
     this.cartSubscription.unsubscribe()
   }
 
-  removeItem(id: string) {
-    this.store.dispatch(CartActions.removeFromCart({ itemId: id }))
+  removeItem(id: string, size: string, color: string) {
+    this.store.dispatch(CartActions.removeFromCart({ itemId: id, size, color }))
+  }
+
+  increase(item: CartItem) {
+    this.store.dispatch(CartActions.addToCart({ item }))
+  }
+
+  decrease(item: CartItem) {
+    this.store.dispatch(CartActions.decreaseQuantity({ item }))
+  }
+
+  saveCard() {
+    console.log('save')
+    this.savedCart = this.cart
+  }
+
+  loadCard() {
+    console.log('load')
+    this.store.dispatch(CartActions.loadCart({ items: this.savedCart.items }))
   }
 
 }

@@ -6,14 +6,21 @@
     <p>Size: {{item.size}}</p>
     <p>Art: {{item.art}}</p>
     <p>Color: {{item.color}}</p>
-    <button mat-button [id]="item.art" (click)="removeItem(item.art)">Delete</button>
-    <button mat-icon-button>
+    <button mat-button [id]="item.art" (click)="removeItem(item.art, item.size, item.color)">Delete</button>
+    <button mat-icon-button  (click)="decrease(item)">
       <mat-icon aria-hidden="false" fontIcon="remove"></mat-icon>
     </button>
     <span style="font-size: 18px;">{{item.quantity}}</span>
-    <button mat-icon-button>
+    <button mat-icon-button (click)="increase(item)">
       <mat-icon aria-hidden="false"  fontIcon="add"></mat-icon>
     </button>
   </div>
-  <div>Total Price{{cart.totalPrice}}</div>
+  <h2 style="text-align: center;">Загальна ціна: {{cart.totalPrice}}</h2>
+  <button mat-button (click)="saveCard()">
+    save cart
+  </button>
+  <button mat-button (click)="loadCard()">
+    load cart
+  </button>
+
 </div>

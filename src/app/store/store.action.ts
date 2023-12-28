@@ -8,5 +8,15 @@ export const addToCart = createAction(
 
 export const removeFromCart = createAction(
   '[Cart] Remove Item',
-  props<{ itemId: string }>()
+  props<{ itemId: string, size: string, color: string }>()
+);
+
+export const loadCart = createAction(
+  '[Cart] LOAD',
+  props<{ items: CartItem[] }>()
+);
+
+export const decreaseQuantity = createAction(
+  '[Cart] decreaseQuantity',
+  props<{ item: CartItem }>()
 );
