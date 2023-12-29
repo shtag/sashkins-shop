@@ -12,6 +12,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatRadioModule } from '@angular/material/radio';
 
 
 @NgModule({
@@ -28,7 +30,9 @@ import { MatDividerModule } from '@angular/material/divider';
     MatCardModule,
     MatStepperModule,
     MatTooltipModule,
-    MatDividerModule
+    MatDividerModule,
+    MatCheckboxModule,
+    MatRadioModule
   ],
   exports: [
     MatSidenavModule,
@@ -41,7 +45,9 @@ import { MatDividerModule } from '@angular/material/divider';
     MatCardModule,
     MatStepperModule,
     MatTooltipModule,
-    MatDividerModule
+    MatDividerModule,
+    MatCheckboxModule,
+    MatRadioModule
   ]
 })
 export class MaterialModule { }

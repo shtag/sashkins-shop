@@ -1,0 +1,19 @@
+:host {}
+
+
+mat-radio-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-processing {
+  height: 400px;
+  width: 300px;
+  margin: 10px;
+  border-radius: 10px;
+
+  @media (max-width: 1024px) {
+    width: auto;
+    height: auto;
+  }
+}

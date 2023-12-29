@@ -1,0 +1,16 @@
+<mat-card class="cart-processing" >
+  <mat-card-content >
+    <h2 style="text-align: center;">Загальна ціна: {{cart.totalPrice}}</h2>
+    <mat-checkbox color="primary">Запам'ятати контакти у браузері для наступних покупок</mat-checkbox>
+
+    <mat-radio-group color="primary" aria-label="Select an option">
+      <p>Спосіб оплати</p>
+      <mat-radio-button  value="1">Повна оплата</mat-radio-button>
+      <mat-radio-button  value="2">Передоплата 50%</mat-radio-button>
+    </mat-radio-group>
+    <br>
+    <button mat-raised-button>
+      Перейти до оформлення
+    </button>
+  </mat-card-content>
+</mat-card> 

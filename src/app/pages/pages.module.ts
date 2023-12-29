@@ -10,6 +10,7 @@ import { ContactsComponent } from './contacts/contacts.component';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from '../shared/material/material.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ProcessingCardComponent } from './cart/processing-card/processing-card.component';
 
 
 
@@ -21,13 +22,15 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     CatalogComponent,
     ProductComponent,
     ContactsComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ProcessingCardComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
     SharedModule,
     MaterialModule,
+
   ],
   exports: [
     CartComponent,
@@ -36,7 +39,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     CatalogComponent,
     ProductComponent,
     ContactsComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ProcessingCardComponent
   ]
 })
 export class PagesModule { }

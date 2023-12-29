@@ -1,49 +1,45 @@
-<h1>Кошик</h1>
+<h1 style="text-align: center;">Кошик</h1>
 <h2 *ngIf="!cart.items.length">Ваш кошик порожній. Додайте принаймні один товар</h2>
 <div *ngIf="cart.items.length">
-  <div *ngFor="let item of cart.items">
-    <mat-card class="cart-item" >
-      <mat-card-content style="display: flex; justify-content: space-between;">
-        <img [src]="item.image[0]" style="object-fit: cover; width: 25%;" alt="">
-        <div>
-          <p>Розмір: {{item.size}}</p>
-          <p>Код товару: {{item.id}}</p>
-          <p>Колір: {{item.color}}</p>
-          <div style="display: flex; align-items: center; gap: 10px;">
-            <button mat-icon-button  (click)="decrease(item)">
-              <mat-icon aria-hidden="false" fontIcon="remove"></mat-icon>
-            </button>
-            <span style="font-size: 18px;">{{item.quantity}}</span>
-            <button mat-icon-button (click)="increase(item)">
-              <mat-icon aria-hidden="false"  fontIcon="add"></mat-icon>
-            </button>
-          </div>
-        </div>
-        <div style="display: flex; justify-content: space-between; align-items: center; flex-direction: column;">
-          <button mat-button [id]="item.art" (click)="removeItem(item.id, item.size, item.color)">Видалити</button>
-          
-          <p>Ціна: {{item.price}}</p>
-        </div>
-      </mat-card-content>
-    </mat-card>
-  </div>
-  <!-- <div  *ngFor="let item of cart.items">
-    <p>Price: {{item.price}}</p>
-    <p>Size: {{item.size}}</p>
-    <p>Art: {{item.art}}</p>
-    <p>Color: {{item.color}}</p>
-    <button mat-button [id]="item.art" (click)="removeItem(item.art, item.size, item.color)">Delete</button>
-    <div>
-      <button mat-icon-button  (click)="decrease(item)">
-        <mat-icon aria-hidden="false" fontIcon="remove"></mat-icon>
-      </button>
-      <span style="font-size: 18px;">{{item.quantity}}</span>
-      <button mat-icon-button (click)="increase(item)">
-        <mat-icon aria-hidden="false"  fontIcon="add"></mat-icon>
-      </button>
+  <div class="cart-layout">
+
+    <div style="flex-grow: 1;" >
+  
+      <div *ngFor="let item of cart.items">
+        <mat-card class="cart-item">
+          <mat-card-content style="display: flex; justify-content: space-between; gap: 10px;">
+            <img [src]="item.image[0]" class="product-image"  alt="">
+            <div style="flex-grow: 1;">
+              <p>Розмір: {{item.size}}</p>
+              <p>Код товару: {{item.id}}</p>
+              <p>Колір: {{item.color}}</p>
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <button mat-icon-button  (click)="decrease(item)">
+                  <mat-icon aria-hidden="false" fontIcon="remove"></mat-icon>
+                </button>
+                <span style="font-size: 18px;">{{item.quantity}}</span>
+                <button mat-icon-button (click)="increase(item)">
+                  <mat-icon aria-hidden="false"  fontIcon="add"></mat-icon>
+                </button>
+              </div>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-direction: column;">
+              <button mat-button [id]="item.art" class="delete-display-big" (click)="removeItem(item.id, item.size, item.color)">Видалити</button>
+              <button mat-icon-button class="delete-display-small"  (click)="removeItem(item.id, item.size, item.color)">
+                <mat-icon aria-hidden="false" fontIcon="delete"></mat-icon>
+              </button>
+              
+              <p style="text-align: center;">Ціна: {{item.price}}</p>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
     </div>
-  </div> -->
-  <h2 style="text-align: center;">Загальна ціна: {{cart.totalPrice}}</h2>
+    <app-processing-card></app-processing-card>
+    <div>
+      
+    </div>
+  </div>
   <button mat-button (click)="saveCard()">
     save cart
   </button>

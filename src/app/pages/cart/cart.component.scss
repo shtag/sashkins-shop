@@ -7,6 +7,55 @@
   }
 }
 
+.cart-layout {
+  display: flex;
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+  }
+
+
+}
+
 .cart-item {
   margin: 10px;
+  border-radius: 10px;
+
+
+
+  .product-image {
+    // height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    width: 120px;
+    min-height: 160px;
+
+    @media (max-width: 424px) {
+      width: 80px;
+      min-height: 110px;
+    }
+
+    @media (min-width: 768px) {
+      // width: 200px;
+      object-fit: cover;
+    }
+  }
+}
+
+.delete-display-small {
+  display: none;
+
+  @media (max-width: 375px) {
+    display: block;
+  }
+}
+
+
+
+.delete-display-big {
+  display: block;
+
+  @media (max-width: 375px) {
+    display: none;
+  }
 }
