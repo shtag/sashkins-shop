@@ -11,7 +11,15 @@ export const selectCarts = (state: AppState) => state.cart;
 
 export const selectCartLength = createSelector(
   selectCarts,
-  (state: CartState) => state.items.length
+  (state: CartState) => {
+    const items = state.items.map(item => item.quantity);
+    if (items.length) {
+      const n = items.reduce((acc, now) => acc + now)
+      return n
+    }
+    return 0
+  }
+
 );
 
 export const selectCart = createSelector(
