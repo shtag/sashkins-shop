@@ -7,10 +7,10 @@ mat-radio-group {
 }
 
 .cart-processing {
-  height: 400px;
   width: 300px;
   margin: 10px;
-  border-radius: 10px;
+  border-radius: 20px;
+  padding: 20px 10px;
 
   @media (max-width: 1024px) {
     width: auto;

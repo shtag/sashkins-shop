@@ -2,16 +2,23 @@
   height: auto;
   display: flex;
   justify-content: space-between;
-  //background-color: rgb(233, 140, 140);
 
-  @media (max-width: 576px) {
-    flex-direction: column;
+  @media (max-width: 425px) {
+    justify-content: center;
   }
 }
 
-.socials {
+.copyright {
+  font-size: 14px;
+
+  @media (max-width: 425px) {
+    display: none;
+  }
+}
+
+.social {
   display: flex;
-  gap: 10px;
+  gap: 40px;
   height: 50px;
   align-items: center;
 
