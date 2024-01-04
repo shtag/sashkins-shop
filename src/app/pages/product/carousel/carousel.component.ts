@@ -66,7 +66,6 @@ export class CarouselComponent implements AfterViewInit {
       else if (this.touchStartX < event.changedTouches[0].screenX && this.imageNumber !== 1) this.prevImage()
       this.disableSwipe = true
     }
-    console.log(this.imageNumber, this.maxImage)
   }
 
   openImage(id: number) {
