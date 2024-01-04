@@ -1,5 +1,8 @@
-<a routerLink="/product/{{item.id}}" class="product-card" *ngFor="let item of items">
-  <img src="{{item.image[0]}}" alt="" srcset="">
-  <p class="title">{{item.name}}</p>
-  <p class="price">{{item.price}} грн</p>
-</a>
+
+@for (item of items; track $index) {
+  <a routerLink="/product/{{item.id}}" class="product-card">
+    <img src="{{item.image[0]}}" alt="" srcset="">
+    <p class="title">{{item.name}}</p>
+    <p class="price">{{item.price}} грн</p>
+  </a>
+}

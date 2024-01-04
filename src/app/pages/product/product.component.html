@@ -1,34 +1,39 @@
-<div *ngIf="product" class="product-card">
-  <div class="galery">
-    <img  src="{{product.image[0]}}" alt="">
+@if (product) {
+  <div  class="product-card">
+    <div class="galery">
+      <img  src="{{product.image[0]}}" alt="">
+    </div>
+    <p>{{product.price}} UAH</p>
+    <form>
+      <div> Колір
+        <mat-chip-listbox>
+          @for (item of product.color; track $index) {
+            <mat-chip-option 
+            #ChipRef
+            (click)="pickColor(ChipRef, item)">
+              <svg matChipAvatar width="18" height="18">
+                <circle cx="9" cy="9" r="9" [attr.fill]="item" />
+              </svg>
+              {{item}}
+            </mat-chip-option>
+          }
+        </mat-chip-listbox>
+      </div>
+      <div>Розмір
+        <mat-chip-listbox>
+          @for (item of product.size; track $index) {
+            <mat-chip-option 
+            #ChipRef 
+            (click)="pickSize(ChipRef, item)">
+              {{item}}
+            </mat-chip-option>
+          }
+          
+        </mat-chip-listbox>
+      </div>
+      <button mat-raised-button type="button" (click)="addToCart()">Додати в кошик</button>
+    </form>
+    
   </div>
-  <p>{{product.price}} UAH</p>
-  <form>
-    <div> Колір
-      <mat-chip-listbox>
-        <mat-chip-option 
-        #ChipRef
-        matTooltip="Info about the action"
-        *ngFor="let item of product.color" 
-        (click)="pickColor(ChipRef, item)">
-          <svg matChipAvatar width="18" height="18">
-            <circle cx="9" cy="9" r="9" [attr.fill]="item" />
-          </svg>
-          {{item}}
-        </mat-chip-option>
-      </mat-chip-listbox>
-    </div>
-    <div>Розмір
-      <mat-chip-listbox>
-        <mat-chip-option 
-        #ChipRef 
-        *ngFor="let item of product.size" 
-        (click)="pickSize(ChipRef, item)">
-          {{item}}
-        </mat-chip-option>
-      </mat-chip-listbox>
-    </div>
-    <button mat-raised-button type="button" (click)="addToCart()">Додати в кошик</button>
-  </form>
-  
-</div>
+}
+

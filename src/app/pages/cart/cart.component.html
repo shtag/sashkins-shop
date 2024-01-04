@@ -1,11 +1,8 @@
 <h1 style="text-align: center;">Кошик</h1>
-<h2 *ngIf="!cart.items.length">Ваш кошик порожній. Додайте принаймні один товар</h2>
-<div *ngIf="cart.items.length">
+@if (cart.items.length) {
   <div class="cart-layout">
-
     <div style="flex-grow: 1;" >
-  
-      <div *ngFor="let item of cart.items">
+      @for (item of cart.items; track item.id) {
         <mat-card class="cart-item">
           <mat-card-content style="display: flex; justify-content: space-between; gap: 10px;">
             <img [src]="item.image[0]" class="product-image"  alt="">
@@ -28,12 +25,11 @@
               <button mat-icon-button class="delete-display-small"  (click)="removeItem(item.id, item.size, item.color)">
                 <mat-icon aria-hidden="false" fontIcon="delete"></mat-icon>
               </button>
-              
               <p style="text-align: center;">Ціна: {{item.price}}</p>
             </div>
           </mat-card-content>
         </mat-card>
-      </div>
+      }
     </div>
     <app-processing-card></app-processing-card>
     <div>
@@ -46,5 +42,6 @@
   <button mat-button (click)="loadCard()">
     load cart
   </button>
-
-</div>
+} @else {
+  <h2>Ваш кошик порожній. Додайте принаймні один товар</h2>
+}

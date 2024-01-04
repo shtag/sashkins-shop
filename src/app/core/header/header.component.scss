@@ -1,9 +1,3 @@
-:host {
-  background-color: cyan;
-  display: flex;
-  justify-content: center;
-}
-
 .header_toolbar {
   background-color: cyan;
 }
@@ -31,8 +25,4 @@ a {
 
 .menu_btn {
   transition: 0.3s;
-
-  &:active {
-    transform: rotate(180deg);
-  }
 }

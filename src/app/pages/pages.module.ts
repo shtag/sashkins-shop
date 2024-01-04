@@ -11,6 +11,7 @@ import { RouterModule } from '@angular/router';
 import { MaterialModule } from '../shared/material/material.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ProcessingCardComponent } from './cart/processing-card/processing-card.component';
+import { LoginComponent } from './login/login.component';
 
 
 
@@ -23,7 +24,8 @@ import { ProcessingCardComponent } from './cart/processing-card/processing-card.
     ProductComponent,
     ContactsComponent,
     PageNotFoundComponent,
-    ProcessingCardComponent
+    ProcessingCardComponent,
+    LoginComponent
   ],
   imports: [
     CommonModule,
@@ -40,7 +42,8 @@ import { ProcessingCardComponent } from './cart/processing-card/processing-card.
     ProductComponent,
     ContactsComponent,
     PageNotFoundComponent,
-    ProcessingCardComponent
+    ProcessingCardComponent,
+    LoginComponent
   ]
 })
 export class PagesModule { }

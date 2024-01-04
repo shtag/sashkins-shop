@@ -7,6 +7,7 @@ import { CatalogComponent } from './pages/catalog/catalog.component';
 import { ProductComponent } from './pages/product/product.component';
 import { ContactsComponent } from './pages/contacts/contacts.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { LoginComponent } from './pages/login/login.component';
 
 const routes: Routes = [
   {
@@ -37,6 +38,10 @@ const routes: Routes = [
   {
     path: 'page-not-found',
     component: PageNotFoundComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   },
   {
     path: '**',
