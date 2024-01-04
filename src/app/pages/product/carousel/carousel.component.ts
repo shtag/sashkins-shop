@@ -29,19 +29,29 @@ export class CarouselComponent implements AfterViewInit {
 
   nextImage() {
     let right = this.images.nativeElement.style.right;
-    this.imageNumber = (+right.split('%').join('')) / 100 + 1
-    right = (+right.split('%').join('') + 100).toString() + '%'
-    if (this.imageNumber >= this.maxImage) right = '0%'
+    if (this.imageNumber >= this.maxImage) {
+      right = '0%'
+      this.imageNumber = 1
+    } else {
+      this.imageNumber++
+      right = (+right.split('%').join('') + 100).toString() + '%'
+    }
     this.images.nativeElement.style.right = right
-    this.images.nativeElement.style.right = right
+    console.log(this.imageNumber, this.maxImage)
   }
 
   prevImage() {
     let right = this.images.nativeElement.style.right;
-    this.imageNumber = (+right.split('%').join('')) / 100 + 1
-    right = (+right.split('%').join('') - 100).toString() + '%'
-    if (this.imageNumber <= 1) right = ((this.maxImage - 1) * 100) + '%'
+    if (this.imageNumber <= 1) {
+      right = ((this.maxImage - 1) * 100) + '%'
+      this.imageNumber = this.maxImage
+    } else {
+
+      this.imageNumber--
+      right = (+right.split('%').join('') - 100).toString() + '%'
+    }
     this.images.nativeElement.style.right = right
+    console.log(this.imageNumber, this.maxImage)
   }
 
   detectTouch(event: TouchEvent) {
@@ -52,10 +62,11 @@ export class CarouselComponent implements AfterViewInit {
   changeImage(event: TouchEvent) {
     if (Math.abs(this.touchStartX - event.changedTouches[0].screenX) > 40 && !this.disableSwipe) {
 
-      if (this.touchStartX > event.changedTouches[0].screenX) this.nextImage()
-      else this.prevImage()
+      if (this.touchStartX > event.changedTouches[0].screenX && this.imageNumber !== this.maxImage) this.nextImage()
+      else if (this.touchStartX < event.changedTouches[0].screenX && this.imageNumber !== 1) this.prevImage()
       this.disableSwipe = true
     }
+    console.log(this.imageNumber, this.maxImage)
   }
 
   openImage(id: number) {
