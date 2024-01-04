@@ -1,15 +1,15 @@
 <div class="galery">
   <div class="galery-view">
-    <div class="gallery-images" #images style="right: 0%;">
+    <div class="gallery-images" #images style="right: 0%;" (touchstart)="detectTouch($event)" (touchmove)="changeImage($event)">
       @for (item of product.image; track $index) {
         <img  [src]="item" [alt]="product.name">
       } 
     </div>
   </div>
-  <button mat-icon-button (click)="prevImage(images)" class="prev-btn">
+  <button mat-icon-button (click)="prevImage()" class="prev-btn">
     <mat-icon>arrow_back_ios_new</mat-icon>
   </button>
-  <button mat-icon-button (click)="nextImage(images)" class="next-btn">
+  <button mat-icon-button (click)="nextImage()" class="next-btn">
     <mat-icon>arrow_forward_ios_new</mat-icon>
   </button>
 </div>
