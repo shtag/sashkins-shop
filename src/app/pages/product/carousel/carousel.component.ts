@@ -55,6 +55,9 @@ export class CarouselComponent implements AfterViewInit {
   }
 
   detectTouch(event: TouchEvent) {
+    const body = document.querySelector('body') as HTMLElement
+    body.style.height = '100%'
+    body.style.overflow = 'hidden'
     this.touchStartX = event.changedTouches[0].screenX
     this.disableSwipe = false
   }
