@@ -51,13 +51,9 @@ export class CarouselComponent implements AfterViewInit {
       right = (+right.split('%').join('') - 100).toString() + '%'
     }
     this.images.nativeElement.style.right = right
-    console.log(this.imageNumber, this.maxImage)
   }
 
   detectTouch(event: TouchEvent) {
-    const body = document.querySelector('body') as HTMLElement
-    body.style.height = '100%'
-    body.style.overflow = 'hidden'
     this.touchStartX = event.changedTouches[0].screenX
     this.disableSwipe = false
   }
