@@ -25,11 +25,19 @@
 
   img {
     display: block;
-    width: 40%;
+    width: 100%;
   }
 }
 
-.gallery-carousel {
-  width: 400px;
-  height: fit-content;
+
+
+.galery-view {
+  overflow: hidden;
+
+  .gallery-images {
+    right: 0%;
+    display: flex;
+    position: relative;
+    transition: 0.5s;
+  }
 }

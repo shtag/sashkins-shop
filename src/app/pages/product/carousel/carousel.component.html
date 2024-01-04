@@ -1,0 +1,15 @@
+<div class="galery">
+  <div class="galery-view">
+    <div class="gallery-images" #images style="right: 0%;">
+      @for (item of product.image; track $index) {
+        <img  [src]="item" [alt]="product.name">
+      } 
+    </div>
+  </div>
+  <button mat-icon-button (click)="prevImage(images)" class="prev-btn">
+    <mat-icon>arrow_back_ios_new</mat-icon>
+  </button>
+  <button mat-icon-button (click)="nextImage(images)" class="next-btn">
+    <mat-icon>arrow_forward_ios_new</mat-icon>
+  </button>
+</div>

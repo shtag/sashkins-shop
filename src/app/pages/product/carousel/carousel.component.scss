@@ -1,0 +1,41 @@
+:host {
+  max-height: 50%;
+  max-width: 40%;
+  background-color: aquamarine;
+  position: relative;
+
+  @media (max-width: 425px) {
+    max-width: 100%;
+  }
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+
+.galery-view {
+  overflow: hidden;
+
+  .gallery-images {
+    right: 0%;
+    display: flex;
+    position: relative;
+    transition: 0.5s;
+  }
+}
+
+.prev-btn {
+  background-color: rgba(255, 255, 255, 0.515);
+  position: absolute;
+  top: calc(50% - 24px);
+  left: 10px;
+}
+
+.next-btn {
+  background-color: rgba(255, 255, 255, 0.515);
+  position: absolute;
+  top: calc(50% - 24px);
+  right: 10px;
+}

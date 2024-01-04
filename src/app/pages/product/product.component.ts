@@ -1,10 +1,8 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import ProductDB from 'src/app/model/db.product.model';
 import { DatabaseService } from 'src/app/shared/database.service';
-import { PRODUCT_COLORS } from './product.colors';
-import { FormControl, FormGroup } from '@angular/forms';
-import { CdkStepper } from '@angular/cdk/stepper';
+// import { PRODUCT_COLORS } from './product.colors';
 import { MatChipOption } from '@angular/material/chips';
 import { CartService } from 'src/app/shared/cart/cart.service';
 
@@ -19,20 +17,7 @@ export class ProductComponent {
 
   productParams = { size: '', color: '' }
 
-  @ViewChild('stepper') stepper?: CdkStepper;
-  images = [
-    { url: 'https://i.imgur.com/MPLY7sB.jpg', title: 'Image 1', altText: 'Description of Image 1' },
-    { url: 'https://i.imgur.com/MPLY7sB.jpg', title: 'Image 2', altText: 'Description of Image 2' },
-    // ... more images
-  ];
-
-  COLORS = PRODUCT_COLORS;
-  number = new FormControl([]);
-  myForm = new FormGroup({
-    number: new FormControl([]) // Initialize as an empty array for multiple selections
-  });
-
-  // @ViewChild('chipListbox') chipListbox: MatChipListbox
+  // COLORS = PRODUCT_COLORS;
 
   constructor(private db: DatabaseService, private router: Router, private route: ActivatedRoute, private cart: CartService) {
 

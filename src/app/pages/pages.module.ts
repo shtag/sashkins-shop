@@ -12,6 +12,7 @@ import { MaterialModule } from '../shared/material/material.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ProcessingCardComponent } from './cart/processing-card/processing-card.component';
 import { LoginComponent } from './login/login.component';
+import { CarouselComponent } from './product/carousel/carousel.component';
 
 
 
@@ -32,7 +33,7 @@ import { LoginComponent } from './login/login.component';
     RouterModule,
     SharedModule,
     MaterialModule,
-
+    CarouselComponent
   ],
   exports: [
     CartComponent,
