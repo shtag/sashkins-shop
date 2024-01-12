@@ -5,6 +5,7 @@ import { DatabaseService } from 'src/app/shared/database.service';
 // import { PRODUCT_COLORS } from './product.colors';
 import { MatChipOption } from '@angular/material/chips';
 import { CartService } from 'src/app/shared/cart/cart.service';
+import { CarouselService } from './carousel/carousel.service';
 
 @Component({
   selector: 'app-product',
@@ -19,7 +20,15 @@ export class ProductComponent {
 
   // COLORS = PRODUCT_COLORS;
 
-  constructor(private db: DatabaseService, private router: Router, private route: ActivatedRoute, private cart: CartService) {
+  openId = 0
+
+  constructor(
+    private db: DatabaseService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private cart: CartService,
+    private carousel: CarouselService
+  ) {
 
     route.params.subscribe(params => this.id = params["id"])
     this.db.allProducts$.subscribe(item => {
@@ -48,6 +57,11 @@ export class ProductComponent {
 Цвет: ${color}
 Размер: ${size}
       `)
+      let colorId = this.product.color.find(item => item.name === color)?.photoId
+      if (!colorId) {
+        colorId = 0
+      }
+      console.log(colorId)
       const cart = {
         ...this.product,
         id: this.product.id,
@@ -56,6 +70,7 @@ export class ProductComponent {
         art: this.product.art,
         price: this.product.price,
         quantity: 1,
+        image: [this.product.image[colorId]]
       }
       this.cart.add(cart)
     }
@@ -67,6 +82,13 @@ export class ProductComponent {
     } else {
       this.productParams.color = chip.value = ''
     }
+    const map = this.product!.color.map(item => {
+      if (item.name === val) {
+        return item.photoId
+      }
+      return undefined
+    }).filter(item => item !== undefined)
+    if (map[0] !== undefined && map.length) this.carousel.dispatchId(map[0])
   }
 
   pickSize(chip: MatChipOption, val: string) {

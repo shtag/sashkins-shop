@@ -1,7 +1,7 @@
 @if (product) {
-  <div  class="product-card">
-    <app-carousel [product]="product"></app-carousel>
-    <div>
+  <div class="product-card">
+    <app-carousel [product]="product" [openId]="openId"></app-carousel>
+    <div class="product-specs">
       <h1>{{product.name}} </h1>
       <p>{{product.price}} UAH</p>
       <form>
@@ -10,11 +10,11 @@
             @for (item of product.color; track $index) {
               <mat-chip-option 
               #ChipRef
-              (click)="pickColor(ChipRef, item)">
+              (click)="pickColor(ChipRef, item.name)">
                 <svg matChipAvatar width="18" height="18">
-                  <circle cx="9" cy="9" r="9" [attr.fill]="item" />
+                  <circle cx="9" cy="9" r="9" [attr.fill]="item.hex" />
                 </svg>
-                {{item}}
+                {{item.name | titlecase}}
               </mat-chip-option>
             }
           </mat-chip-listbox>
@@ -28,7 +28,6 @@
                 {{item}}
               </mat-chip-option>
             }
-            
           </mat-chip-listbox>
         </div>
       </form>

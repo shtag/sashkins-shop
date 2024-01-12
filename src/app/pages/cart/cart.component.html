@@ -5,7 +5,10 @@
       @for (item of cart.items; track item.id) {
         <mat-card class="cart-item">
           <mat-card-content style="display: flex; justify-content: space-between; gap: 10px;">
-            <img [src]="item.image[0]" class="product-image"  alt="">
+            <a routerLink="/product/{{item.id}}">
+
+              <img [src]="item.image[0]" class="product-image"  alt="">
+            </a>
             <div style="flex-grow: 1;">
               <p>Розмір: {{item.size}}</p>
               <p>Код товару: {{item.id}}</p>

@@ -11,33 +11,6 @@
   }
 }
 
-
-
-
-.galery {
-  max-height: 50%;
-  max-width: 40%;
-  background-color: aquamarine;
-
-  @media (max-width: 425px) {
-    max-width: 100%;
-  }
-
-  img {
-    display: block;
-    width: 100%;
-  }
-}
-
-
-
-.galery-view {
-  overflow: hidden;
-
-  .gallery-images {
-    right: 0%;
-    display: flex;
-    position: relative;
-    transition: 0.5s;
-  }
+.product-specs {
+  padding: 20px;
 }
