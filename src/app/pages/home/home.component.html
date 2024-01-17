@@ -1,18 +1,22 @@
 <button mat-button (click)="getAllProducts()">Get All Products</button>
-<form class="example-form">
-  <mat-form-field class="example-full-width">
-    <mat-label>ID</mat-label>
-    <input #idInput matInput placeholder="">
+<div>
+  <mat-form-field >
+    <mat-label>Enter a date range</mat-label>
+    <mat-date-range-input [rangePicker]="picker" >
+      <input matStartDate placeholder="Start date" pattern="\d{4}-\d{2}-\d{2}" #start>
+      <input matEndDate placeholder="End date" pattern="\d{4}-\d{2}-\d{2}" #end>
+    </mat-date-range-input>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-date-range-picker #picker></mat-date-range-picker>
   </mat-form-field>
-  
-  <button mat-button (click)="getProduct(idInput.value)" type="button">Get Product</button>
-</form>
-<button mat-button (click)="getAllOrders()">Get All Orders</button>
-<form class="example-form">
-  <mat-form-field class="example-full-width">
-    <mat-label>ID</mat-label>
-    <input #idOrder matInput placeholder="">
-  </mat-form-field>
-  
-  <button mat-button (click)="setOrder(idOrder.value)" type="button">Set Orders</button>
-</form>
+  <button mat-button type="button" (click)="getAllTTN(start.value, end.value)">Get All TTN</button>
+</div>
+
+<button mat-button (click)="createTTN()">Create TTN (1)</button>
+<div>
+
+  <button mat-button (click)="createSender()">Create agent sender</button>
+  <button mat-button (click)="createRecipient()">Create agent recipient</button>
+</div>
+<button mat-button (click)="getAllSender()">Get all sender</button>
+<button mat-button (click)="getAllRecipient()">Get all recipient</button>

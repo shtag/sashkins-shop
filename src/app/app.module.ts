@@ -18,12 +18,14 @@ import { StoreModule } from '@ngrx/store';
 import { cartReducer } from "./store/store.reducers";
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { metaReducers } from "./store/hydration.reducer";
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

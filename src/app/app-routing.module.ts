@@ -12,18 +12,22 @@ import { LoginComponent } from './pages/login/login.component';
 const routes: Routes = [
   {
     path: '',
+    title: 'sashkins.shop',
     component: HomeComponent
   },
   {
     path: 'cart',
+    title: 'Кошик',
     component: CartComponent
   },
   {
     path: 'delivery',
+    title: 'Доставка',
     component: DeliveryComponent
   },
   {
     path: 'contacts',
+    title: 'Контакти',
     component: ContactsComponent
   },
   {
@@ -37,10 +41,12 @@ const routes: Routes = [
   },
   {
     path: 'page-not-found',
+    title: '404',
     component: PageNotFoundComponent
   },
   {
     path: 'login',
+    title: 'Login',
     component: LoginComponent
   },
   {

@@ -9,6 +9,11 @@
   <a class="home_link" routerLink="/">sashkins.shop</a>
   <span class="header-spacer"></span>
   <button mat-icon-button  aria-label="shopping cart button" [routerLink]="['./cart']">
-    <mat-icon [matBadge]="itemsInCart$ | async" matBadgeColor="warn">shopping_cart</mat-icon>
+    @if (itemsInCart$ | async) {
+
+      <mat-icon [matBadge]="itemsInCart$ | async" matBadgeColor="warn">shopping_cart</mat-icon>
+    } @else {
+      <mat-icon matBadgeColor="warn">shopping_cart</mat-icon>
+    }
   </button>
 </mat-toolbar>

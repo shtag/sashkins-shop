@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import ProductDB from 'src/app/model/db.product.model';
 import { DatabaseService } from 'src/app/shared/database.service';
@@ -6,19 +6,18 @@ import { DatabaseService } from 'src/app/shared/database.service';
 import { MatChipOption } from '@angular/material/chips';
 import { CartService } from 'src/app/shared/cart/cart.service';
 import { CarouselService } from './carousel/carousel.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.scss'],
 })
-export class ProductComponent {
+export class ProductComponent implements AfterViewInit {
   id: string = '1';
   product?: ProductDB;
 
   productParams = { size: '', color: '' }
-
-  // COLORS = PRODUCT_COLORS;
 
   openId = 0
 
@@ -27,9 +26,9 @@ export class ProductComponent {
     private router: Router,
     private route: ActivatedRoute,
     private cart: CartService,
-    private carousel: CarouselService
+    private carousel: CarouselService,
+    private titleService: Title
   ) {
-
     route.params.subscribe(params => this.id = params["id"])
     this.db.allProducts$.subscribe(item => {
       route.params.subscribe((params) => {
@@ -40,8 +39,13 @@ export class ProductComponent {
         router.navigate(['page-not-found'])
       } else {
         this.product = arr[0]
+        this.titleService.setTitle(this.product.name);
       }
     })
+  }
+
+  ngAfterViewInit() {
+    console.log(11)
   }
 
   addToCart() {

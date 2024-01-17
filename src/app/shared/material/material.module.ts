@@ -14,6 +14,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 @NgModule({
@@ -32,7 +34,9 @@ import { MatRadioModule } from '@angular/material/radio';
     MatTooltipModule,
     MatDividerModule,
     MatCheckboxModule,
-    MatRadioModule
+    MatRadioModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   exports: [
     MatSidenavModule,
@@ -47,7 +51,9 @@ import { MatRadioModule } from '@angular/material/radio';
     MatTooltipModule,
     MatDividerModule,
     MatCheckboxModule,
-    MatRadioModule
+    MatRadioModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ]
 })
 export class MaterialModule { }
