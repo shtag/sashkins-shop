@@ -1,1 +1,37 @@
-<p>checkout works!</p>
+
+
+<mat-form-field appearance="outline">
+  <mat-label>Місто</mat-label>
+  <input type="text"
+         placeholder="Оберіть місто"
+         aria-label="Місто"
+         matInput
+         (input)="filter()"
+         [formControl]="myControl"
+         [matAutocomplete]="auto">
+  <mat-autocomplete #auto="matAutocomplete">
+    @for (option of options | async; track option) {
+      <mat-option [value]="option.Description" (onSelectionChange)="sityRef = option.Ref">{{option.Description}}</mat-option>
+    }
+  </mat-autocomplete>
+</mat-form-field>
+<button mat-button (click)="findCity()">Find</button>
+
+<br>
+
+<mat-form-field appearance="outline">
+  <mat-label>Відділення</mat-label>
+  <input type="text"
+         placeholder="Оберіть відділення"
+         aria-label="Відділення"
+         matInput
+         (input)="filter()"
+         [formControl]="warehouseNumber"
+         [matAutocomplete]="auto">
+  <mat-autocomplete #auto="matAutocomplete">
+    @for (option of options | async; track option) {
+      <mat-option [value]="option.Description" (onSelectionChange)="sityRef = option.Ref">{{option.Description}}</mat-option>
+    }
+  </mat-autocomplete>
+</mat-form-field>
+<button mat-button (click)="findWarehouse()">Find</button>

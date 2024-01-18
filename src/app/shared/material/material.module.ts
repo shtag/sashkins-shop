@@ -16,7 +16,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 @NgModule({
   declarations: [],
@@ -36,7 +36,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatCheckboxModule,
     MatRadioModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatAutocompleteModule
   ],
   exports: [
     MatSidenavModule,
@@ -53,7 +54,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatCheckboxModule,
     MatRadioModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatAutocompleteModule
   ]
 })
 export class MaterialModule { }

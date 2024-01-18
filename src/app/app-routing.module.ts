@@ -8,6 +8,7 @@ import { ProductComponent } from './pages/product/product.component';
 import { ContactsComponent } from './pages/contacts/contacts.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { LoginComponent } from './pages/login/login.component';
+import { CheckoutComponent } from './pages/checkout/checkout.component';
 
 const routes: Routes = [
   {
@@ -48,6 +49,11 @@ const routes: Routes = [
     path: 'login',
     title: 'Login',
     component: LoginComponent
+  },
+  {
+    path: 'checkout',
+    title: 'Checkout',
+    component: CheckoutComponent
   },
   {
     path: '**',
