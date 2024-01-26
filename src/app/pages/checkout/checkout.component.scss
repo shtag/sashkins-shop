@@ -1,3 +1,11 @@
 :host {
   flex-grow: 1;
 }
+
+.disabled-scroolbar::-webkit-scrollbar {
+  width: 0px;
+}
+
+.disabled-scroolbar {
+  -ms-overflow-style: none;
+}

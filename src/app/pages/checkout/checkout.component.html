@@ -1,37 +1,89 @@
 
 
-<mat-form-field appearance="outline">
+<mat-form-field appearance="outline" style="width: 400px;">
   <mat-label>Місто</mat-label>
   <input type="text"
-         placeholder="Оберіть місто"
+         placeholder="Пошук міста"
          aria-label="Місто"
          matInput
-         (input)="filter()"
-         [formControl]="myControl"
-         [matAutocomplete]="auto">
-  <mat-autocomplete #auto="matAutocomplete">
-    @for (option of options | async; track option) {
-      <mat-option [value]="option.Description" (onSelectionChange)="sityRef = option.Ref">{{option.Description}}</mat-option>
+         (input)="filterCity()"
+         [formControl]="controlCity"
+         [matAutocomplete]="autoCity">
+         
+  <mat-autocomplete #autoCity="matAutocomplete">
+    @for (option of searchCity | async; track option) {
+      @if ($index) {
+        <mat-divider></mat-divider>
+      }
+      <mat-option [value]="option.Description" (onSelectionChange)="findCity(option)">{{option.Description}}</mat-option>
     }
   </mat-autocomplete>
+  @if (controlCity.value) {
+    <button matSuffix mat-icon-button aria-label="Clear" (click)="resetCityValue()">
+      <mat-icon>close</mat-icon>
+    </button>
+  }
 </mat-form-field>
-<button mat-button (click)="findCity()">Find</button>
+<button mat-button >Find</button>
+
+
+
+
+
 
 <br>
 
-<mat-form-field appearance="outline">
+
+<mat-radio-group aria-label="Select an option">
+  <mat-radio-button value="1">Відділення</mat-radio-button>
+  <br>
+  <mat-radio-button value="2">Поштомат</mat-radio-button>
+</mat-radio-group>
+<br>
+
+<mat-form-field  style="width: 400px;" appearance="outline">
   <mat-label>Відділення</mat-label>
   <input type="text"
-         placeholder="Оберіть відділення"
+         placeholder="Номер відділення/поштомату"
          aria-label="Відділення"
          matInput
-         (input)="filter()"
-         [formControl]="warehouseNumber"
-         [matAutocomplete]="auto">
-  <mat-autocomplete #auto="matAutocomplete">
-    @for (option of options | async; track option) {
-      <mat-option [value]="option.Description" (onSelectionChange)="sityRef = option.Ref">{{option.Description}}</mat-option>
+         (input)="filterWarehouse()"
+         [formControl]="controlWarehouse"
+         [matAutocomplete]="autoWarehouse">
+  <mat-autocomplete #autoWarehouse="matAutocomplete">
+  @if(cityRef){
+
+    @for (option of searchWarehouse | async; track $index) {
+      @if ($index) {
+        <mat-divider></mat-divider>
+      }
+      <mat-option [value]="option.Description" (onSelectionChange)="warehouseRef = option.Ref">{{option.Description}}</mat-option>
     }
+  }
+    
   </mat-autocomplete>
 </mat-form-field>
-<button mat-button (click)="findWarehouse()">Find</button>
+
+<br>
+
+<mat-form-field appearance="outline" style="position: relative;" style="width: 400px;">
+  <mat-label>Місто</mat-label>
+  <mat-select class="disabled-scroolbar" placeholder="City">
+    <div style="position: sticky;top: 0; width: 100%; background-color: rgb(244, 1, 1);">
+
+      <mat-form-field style="width: 100%;"  appearance="outline">
+  
+        <input matInput 
+                placeholder="Пошук" 
+                (input)="filterCity()"
+                [formControl]="controlCity">
+      </mat-form-field>
+    </div>
+    @for (option of searchCity | async; track option) {
+      @if ($index) {
+        <mat-divider></mat-divider>
+      }
+      <mat-option [value]="option.Description" (onSelectionChange)="findCity(option)">{{option.Description}}</mat-option>
+    }
+  </mat-select>
+</mat-form-field>

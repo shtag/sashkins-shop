@@ -1,10 +1,13 @@
+import { WarehouseInfo } from './../../shared/nova-post/model/city.np.model';
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Observable, map, startWith } from 'rxjs';
-import { CityInfo, CityResponse } from 'src/app/shared/nova-post/model/city.np.model';
+import { Observable, map } from 'rxjs';
+import { CityInfo } from 'src/app/shared/nova-post/model/city.np.model';
 import { NpWarehouseService } from 'src/app/shared/nova-post/np-warehouse.service';
 import { SharedModule } from 'src/app/shared/shared.module';
+import * as ls from 'lodash';
+import { debounce } from './../../shared/debounce'
 
 @Component({
   selector: 'app-checkout',
@@ -18,30 +21,75 @@ import { SharedModule } from 'src/app/shared/shared.module';
   templateUrl: './checkout.component.html',
   styleUrl: './checkout.component.scss'
 })
-export class CheckoutComponent {
-  myControl = new FormControl('');
-  warehouseNumber = new FormControl('');
-  options: Observable<CityInfo[]>
-  sityRef = ''
+export class CheckoutComponent implements AfterViewInit {
+  controlCity = new FormControl('');
+  controlWarehouse = new FormControl('');
+  searchCity: Observable<CityInfo[]>;
+  searchWarehouse: Observable<WarehouseInfo[]>;
+  cityRef = ''
+  warehouseRef = ''
+
+  isWarehouseDisabled = true
+
+  lastInput = 0;
 
   constructor(private npCity: NpWarehouseService) {
-    this.options = this.npCity.findCity('').pipe(map(value => value.data))
+    this.controlWarehouse.disable()
+    this.searchCity = this.npCity.findCity('').pipe(map(value => value.data))
+    this.searchWarehouse = this.npCity.findWarehouse('', '').pipe(map(value => value.data))
+    // this.searchWarehouse = this.npCity.findWarehouse('', '').pipe(map(value => value))
+  }
+  ngAfterViewInit() {
+    console.log('vierwInit')
+
+
   }
 
-  filter() {
-    const val = this.myControl.value
-    if (typeof val === 'string') {
+  @debounce(300)
+  filterCity() {
+    if (Date.now() - this.lastInput < 1000) return
+    const city = this.controlCity.value
+    if (typeof city === 'string') {
 
-      this.options = this.npCity.findCity(val).pipe(map(value => value.data))
+      this.searchCity = this.npCity.findCity(city).pipe(map(value => value.data))
+    }
+    this.controlWarehouse.disable()
+    this.controlWarehouse.setValue('')
+  }
+
+  private _filterWarehouse() {
+    const city = this.cityRef
+    console.log(city)
+    const warehouse = this.controlWarehouse.value
+    if (typeof warehouse === 'string' && typeof city === 'string') {
+      this.searchWarehouse = this.npCity.findWarehouse(city, warehouse).pipe(map(value => value.data))
+      this.npCity.findWarehouse(city, warehouse).subscribe(item => console.log(item.data))
     }
   }
 
-  findCity() {
-    console.log(this.sityRef)
+  @debounce(300)
+  filterWarehouse() {
+    const city = this.cityRef
+    const warehouse = this.controlWarehouse.value
+    if (typeof warehouse === 'string' && typeof city === 'string') {
+      this.searchWarehouse = this.npCity.findWarehouse(city, warehouse).pipe(map(value => value.data))
+      this.npCity.findWarehouse(city, warehouse).subscribe(item => console.log(item.data))
+    }
 
   }
-  findWarehouse() {
-    this.npCity.findWarehouse(this.sityRef, this.warehouseNumber.value as string).subscribe(item => console.log(item))
 
+  findCity(city: CityInfo) {
+    console.log(city.Ref)
+    this.cityRef = city.Ref
+    this.filterWarehouse()
+    this.controlWarehouse.enable()
   }
+
+  resetCityValue() {
+    this.cityRef = ''
+    this.controlCity.reset()
+    this.controlWarehouse.disable()
+    this.searchCity = this.npCity.findCity('').pipe(map(value => value.data))
+  }
+
 }
