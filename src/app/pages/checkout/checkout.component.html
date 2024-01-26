@@ -39,7 +39,13 @@
       @if ($index) {
         <mat-divider></mat-divider>
       }
-      <mat-option [value]="option.Description" (onSelectionChange)="findCity(option)">{{option.Description}}</mat-option>
+      @if($index %2){
+
+        <mat-option [value]="option.Description" (onSelectionChange)="findCity(option)">{{option.Description}}</mat-option>
+      } @else {
+
+        <mat-option style="background-color: rgb(233, 233, 233);" [value]="option.Description" (onSelectionChange)="findCity(option)">{{option.Description}}</mat-option>
+      }
     }
   </mat-autocomplete>
   @if (controlCity.value) {
@@ -76,6 +82,7 @@
         <mat-divider></mat-divider>
       }
       <mat-option [value]="option.Description" (onSelectionChange)="warehouseRef = option.Ref">{{option.Description}}</mat-option>
+      
     }
   }
   
