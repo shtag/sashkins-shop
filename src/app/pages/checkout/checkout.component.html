@@ -1,6 +1,30 @@
+<mat-form-field appearance="outline" class="form-field">
+  <mat-label>Призвіще</mat-label>
+  <input type="text"
+         placeholder="Призвіще"
+         aria-label="Призвіще"
+         matInput
+         >
+</mat-form-field>
 
+<mat-form-field appearance="outline" class="form-field">
+  <mat-label>Ім'я</mat-label>
+  <input type="text"
+         placeholder="Ім'я"
+         aria-label="Ім'я"
+         matInput
+         >
+</mat-form-field>
+<mat-form-field appearance="outline" class="form-field">
+  <mat-label>Телефон</mat-label>
+  <input type="text"
+         placeholder="Телефон"
+         aria-label="Телефон"
+         matInput
+         >
+</mat-form-field>
 
-<mat-form-field appearance="outline" style="width: 400px;">
+<mat-form-field appearance="outline" class="form-field">
   <mat-label>Місто</mat-label>
   <input type="text"
          placeholder="Пошук міста"
@@ -24,24 +48,18 @@
     </button>
   }
 </mat-form-field>
-<button mat-button >Find</button>
 
 
 
-
-
-
-<br>
 
 
 <mat-radio-group aria-label="Select an option">
   <mat-radio-button value="1">Відділення</mat-radio-button>
-  <br>
   <mat-radio-button value="2">Поштомат</mat-radio-button>
 </mat-radio-group>
 <br>
 
-<mat-form-field  style="width: 400px;" appearance="outline">
+<mat-form-field  appearance="outline" class="form-field">
   <mat-label>Відділення</mat-label>
   <input type="text"
          placeholder="Номер відділення/поштомату"
@@ -60,16 +78,20 @@
       <mat-option [value]="option.Description" (onSelectionChange)="warehouseRef = option.Ref">{{option.Description}}</mat-option>
     }
   }
+  
     
   </mat-autocomplete>
+  @if (controlWarehouse.value) {
+    <button matSuffix mat-icon-button aria-label="Clear" (click)="resetWarehouseValue()">
+      <mat-icon>close</mat-icon>
+    </button>
+  }
 </mat-form-field>
 
-<br>
-
-<mat-form-field appearance="outline" style="position: relative;" style="width: 400px;">
+<mat-form-field appearance="outline" style="position: relative;" class="form-field">
   <mat-label>Місто</mat-label>
   <mat-select class="disabled-scroolbar" placeholder="City">
-    <div style="position: sticky;top: 0; width: 100%; background-color: rgb(244, 1, 1);">
+    <div style="position: sticky;top: 0; width: 100%; background-color: rgb(255, 255, 255);">
 
       <mat-form-field style="width: 100%;"  appearance="outline">
   
@@ -87,3 +109,5 @@
     }
   </mat-select>
 </mat-form-field>
+<h2>Загальна сума: 400 грн</h2>
+<button class="form-field" mat-raised-button>Оплатити</button>

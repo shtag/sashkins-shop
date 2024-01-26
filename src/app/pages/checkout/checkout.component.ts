@@ -91,5 +91,10 @@ export class CheckoutComponent implements AfterViewInit {
     this.controlWarehouse.disable()
     this.searchCity = this.npCity.findCity('').pipe(map(value => value.data))
   }
+  resetWarehouseValue() {
+    this.warehouseRef = ''
+    this.controlWarehouse.reset()
+    this.searchWarehouse = this.npCity.findWarehouse(this.cityRef, '').pipe(map(value => value.data))
+  }
 
 }
